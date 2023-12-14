@@ -1,0 +1,20 @@
+name: cmake CI
+
+on:
+  push:
+    branches: [ "cmake" ]
+  pull_request:
+    branches: [ "cmake" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: cmake
+      run: |
+        rm -rf build
+        cmake -B build -DCMAKE_BUILD_TYPE=Debug
+        cmake --build build --config Debug
