@@ -1,5 +1,5 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0 
-OBJS =		testlibevent.o
+OBJS =		testlibevent
 
 LIBS =	-levent
 
