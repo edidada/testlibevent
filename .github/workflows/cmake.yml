@@ -17,6 +17,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install liblibevent-dev -y
+        sudo apt install liblibevent-dev -y
         rm -rf build
         cmake -B build -DCMAKE_BUILD_TYPE=Debug
         cmake --build build --config Debug
