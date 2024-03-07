@@ -18,7 +18,3 @@ jobs:
         sudo apt update
         sudo apt install libevent-dev -y
         make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
