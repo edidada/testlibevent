@@ -14,7 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make
-      run: make
+      run: |
+        sudo apt update
+        sudo apt install libevent-dev -y
+        make
     - name: make check
       run: make check
     - name: make distcheck
