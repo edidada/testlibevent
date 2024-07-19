@@ -52,6 +52,8 @@ sudo make install
 
 cmake -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_BENCHMARK=ON ..
 
+上面哪些写cmake 的，D:\git\github\testlibevent\cmake-build-debug\_deps\libevent-build\bin\Debug\event.dll存在，报错 D:\git\github\testlibevent\cmake-build-debug\Debug\testlibevent.exe 链接不到event.dll
+
 ### conan
 
 ### vcpkg
