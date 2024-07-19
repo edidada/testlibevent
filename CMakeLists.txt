@@ -29,13 +29,13 @@ if(WIN32)
     set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/bin/Debug/event_core.dll)
     set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/bin/Debug/event_extra.dll)
 elseif(APPLE)
-    set(LIBEVENTDLL ${libevent_BINARY_DIR}/Debug/event.dylib)
-    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/libevent_core.dylib)
-    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/libevent_extra.dylib)
+    set(LIBEVENTDLL ${libevent_BINARY_DIR}/lib/event.dylib)
+    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/lib/libevent_core.dylib)
+    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/lib/libevent_extra.dylib)
 else()
     set(LIBEVENTDLL ${libevent_BINARY_DIR}/Debug/event.so)
-    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/libevent_core.so)
-    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/libevent_extra.so)
+    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/Debug/libevent_core.so)
+    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/Debug/libevent_extra.so)
 endif()
 
 add_custom_command(TARGET testlibevent POST_BUILD
@@ -46,7 +46,6 @@ add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${LIBEVENT_CORE_DLL}
         $<TARGET_FILE_DIR:testlibevent>)
-
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${LIBEVENT_EXTRA_DLL}
