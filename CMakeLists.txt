@@ -22,16 +22,32 @@ endif()
 add_executable(testlibevent src/libevent.cpp)
 target_link_libraries(testlibevent PRIVATE event event_core event_extra)
 # 添加自定义命令，复制 DLL 文件到可执行文件目录
+
+# 添加自定义命令，复制共享库文件到可执行文件目录
+if(WIN32)
+    set(LIBEVENTDLL ${libevent_BINARY_DIR}/bin/Debug/event.dll)
+    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/bin/Debug/event_core.dll)
+    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/bin/Debug/event_extra.dll)
+elseif(APPLE)
+    set(LIBEVENTDLL ${libevent_BINARY_DIR}/Debug/event.dylib)
+    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/libevent_core.dylib)
+    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/libevent_extra.dylib)
+else()
+    set(LIBEVENTDLL ${libevent_BINARY_DIR}/Debug/event.so)
+    set(LIBEVENT_CORE_DLL ${libevent_BINARY_DIR}/libevent_core.so)
+    set(LIBEVENT_EXTRA_DLL ${libevent_BINARY_DIR}/libevent_extra.so)
+endif()
+
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/bin/Debug/event.dll
+        ${LIBEVENT_DLL}
         $<TARGET_FILE_DIR:testlibevent>)
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/bin/Debug/event_core.dll
+        ${LIBEVENT_CORE_DLL}
         $<TARGET_FILE_DIR:testlibevent>)
 
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/bin/Debug/event_extra.dll
+        ${LIBEVENT_EXTRA_DLL}
         $<TARGET_FILE_DIR:testlibevent>)
