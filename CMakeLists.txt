@@ -24,14 +24,14 @@ target_link_libraries(testlibevent PRIVATE event event_core event_extra)
 # 添加自定义命令，复制 DLL 文件到可执行文件目录
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/Debug/event.lib
+        ${libevent_BINARY_DIR}/bin/Debug/event.dll
         $<TARGET_FILE_DIR:testlibevent>)
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/Debug/event_core.lib
+        ${libevent_BINARY_DIR}/bin/Debug/event_core.dll
         $<TARGET_FILE_DIR:testlibevent>)
 
 add_custom_command(TARGET testlibevent POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${libevent_BINARY_DIR}/Debug/event_extra.lib
+        ${libevent_BINARY_DIR}/bin/Debug/event_extra.dll
         $<TARGET_FILE_DIR:testlibevent>)
