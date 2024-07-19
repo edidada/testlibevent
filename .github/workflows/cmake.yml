@@ -1,10 +1,10 @@
-name: cmake CI
+name: cmake_third_party CI
 
 on:
   push:
-    branches: [ "cmake" ]
+    branches: [ "cmake_third_party" ]
   pull_request:
-    branches: [ "cmake" ]
+    branches: [ "cmake_third_party" ]
 
 jobs:
   build:
@@ -13,10 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: cmake
+    - name: cmake_third_party
       run: |
         sudo apt update
-        sudo apt install libevent-dev -y
-        rm -rf build
         cmake -B build -DCMAKE_BUILD_TYPE=Debug
         cmake --build build --config Debug
