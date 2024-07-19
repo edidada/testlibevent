@@ -10,6 +10,7 @@ FetchContent_Declare(
         SOURCE_DIR        ${CMAKE_CURRENT_SOURCE_DIR}/cmake_third_party/libevent
 )
 FetchContent_MakeAvailable(libevent)
+set(EVENT__DISABLE_OPENSSL ON)
+
 add_executable(testlibevent src/libevent.cpp)
-find_package(Libevent CONFIG REQUIRED)
-target_link_libraries(testlibevent PRIVATE libevent::core libevent::extra)
+target_link_libraries(testlibevent PRIVATE event event_core event_extra)
