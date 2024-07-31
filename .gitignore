@@ -5,3 +5,4 @@
 .project
 .idea
 cmake-build-*
+cmake_third_party/
