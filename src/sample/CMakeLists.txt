@@ -1,2 +1,8 @@
 find_package(libevent)
 add_executable(dns-example dns-example.c)
+target_link_libraries(dns-example PRIVATE libevent::core libevent::extra libevent::pthreads)
+
+add_executable(event-read-fifo event-read-fifo.c)
+target_link_libraries(event-read-fifo PRIVATE libevent::core libevent::extra libevent::pthreads)
+add_executable(hello-world hello-world.c)
+target_link_libraries(hello-world PRIVATE libevent::core libevent::extra libevent::pthreads)
