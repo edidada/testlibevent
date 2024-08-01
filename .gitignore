@@ -3,6 +3,6 @@
 /.settings/
 .cproject
 .project
-.idea
+.idea/
 cmake-build-*
 cmake_third_party/
